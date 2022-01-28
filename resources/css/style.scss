@@ -1,0 +1,43 @@
+@import './general/vars.scss';
+@import './general/reset.scss';
+
+@import './partials/footer';
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: $color-primary;
+}
+
+.home_page {
+	.hero {
+		height: 620px;
+		background-image: url('https://images.unsplash.com/photo-1515536765-9b2a70c4b333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80');
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		img {
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+		.hero_title {
+			margin-right: 350px;
+			text-align: right;
+			width: 55ch;
+		}
+		
+	}
+	.content {
+		background-color: #ffe082;
+		padding: 1.5rem;
+	}
+}
