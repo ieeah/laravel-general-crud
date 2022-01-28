@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Joke extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [ 'title', 'body', 'author' ];
 }

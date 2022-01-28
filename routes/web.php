@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JokesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,6 @@ Route::get('/', function () {
 	return view('home');
 })->name('home');
 
-Route::resource('Jokes', 'JokesController');
+// Route::get('/', 'HomeController@Index')->name('home');
+
+Route::resource('/Jokes', JokesController::class);

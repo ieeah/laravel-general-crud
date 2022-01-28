@@ -39,4 +39,13 @@ body {
   padding: 1.5rem;
 }
 
+.index_page .table {
+  background-color: #ffe082;
+}
+
+.create_page form .btn {
+  width: fit-content;
+  align-self: flex-end;
+}
+
 /*# sourceMappingURL=app.css.map */

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Joke;
 
 class JokesController extends Controller
 {
@@ -13,7 +15,8 @@ class JokesController extends Controller
 	 */
 	public function index()
 	{
-		//
+		$jokes = Joke::all();
+		return view('Jokes.index', compact('jokes'));
 	}
 
 	/**
@@ -23,7 +26,7 @@ class JokesController extends Controller
 	 */
 	public function create()
 	{
-		//
+		return view('Jokes.create');
 	}
 
 	/**
@@ -34,7 +37,11 @@ class JokesController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
+		$data = $request->all();
+		$new_joke = new Joke;
+		$new_joke->fill($data);
+		$new_joke->save();
+		return redirect()->route('home');
 	}
 
 	/**
@@ -45,7 +52,8 @@ class JokesController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		$joke = Joke::find($id);
+		return view('Jokes.show', compact('joke'));
 	}
 
 	/**
@@ -56,7 +64,11 @@ class JokesController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$joke = Joke::find($id);
+		if ($joke) {
+			return view('Jokes.edit', compact('joke'));
+		}
+		abort(404);
 	}
 
 	/**
@@ -68,7 +80,7 @@ class JokesController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		//TODO - Update file
 	}
 
 	/**
@@ -79,6 +91,6 @@ class JokesController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		// TODO - cancellazione file
 	}
 }
