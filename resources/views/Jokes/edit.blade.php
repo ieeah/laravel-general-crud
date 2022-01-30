@@ -1,8 +1,13 @@
 @extends('layout.main')
 
 @section('content')
+
+	<h1>
+		Edit {{$joke->title}}
+	</h1>
+
 	<div class="edit_page container">
-		<form action="{{route('Jokes.update')}}" method="GET" class="w-100 p-3 my-5 d-flex flex-column">
+		<form action="{{route('Jokes.update', $joke->id)}}" method="post" class="w-100 p-3 my-5 d-flex flex-column">
 		@csrf
 		@method('PATCH')
 		<div class="mb-2 fs-5">

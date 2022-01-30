@@ -17,6 +17,8 @@ class JokesController extends Controller
 	{
 		$jokes = Joke::all();
 		return view('Jokes.index', compact('jokes'));
+		// $jokes = Joke::paginate(5);
+		// return view('Jokes.index', compact('jokes'));
 	}
 
 	/**
@@ -41,7 +43,7 @@ class JokesController extends Controller
 		$new_joke = new Joke;
 		$new_joke->fill($data);
 		$new_joke->save();
-		return redirect()->route('home');
+		return redirect()->route('Jokes.index');
 	}
 
 	/**
@@ -80,7 +82,11 @@ class JokesController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//TODO - Update file
+		$data = $request->all();
+		$edited = Joke::find($id);
+		$edited->update($data);
+
+		return redirect()->route('Jokes.show', $id);
 	}
 
 	/**
@@ -91,6 +97,8 @@ class JokesController extends Controller
 	 */
 	public function destroy($id)
 	{
-		// TODO - cancellazione file
+		$delete = Joke::find($id);
+		$delete->delete();
+		return redirect()->route('Jokes.index')->with('deleted', $delete->title);
 	}
 }
